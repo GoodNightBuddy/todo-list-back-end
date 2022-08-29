@@ -4,6 +4,10 @@ import { Todo } from '../models/todo';
 const TODOS: Todo[] = []
 
 export const createTodo: RequestHandler = (req, res, next) => {
+  if(!req.body.text) {
+    res.status(500).json('Todo must contain non empty field "text" ');
+    return;
+  }
   const text = (req.body as {text: string}).text;
   const newTodo = new Todo(text)
 
@@ -19,6 +23,11 @@ export const getTodos: RequestHandler = (req, res, next) => {
 
 export const updateTodos: RequestHandler<{id: string}> = (req, res, next) => {
   const todoId = +req.params.id;
+  if(!req.body.text) {
+    res.status(500).json('Todo must contain non empty field "text" ');
+    return;
+  };
+
   const updatedText = (req.body as {text: string}).text;
 
   const todoIndex = TODOS.findIndex(todo => todoId === todo.id)
