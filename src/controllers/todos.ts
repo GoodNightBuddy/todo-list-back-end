@@ -9,7 +9,6 @@ export const createTodo: RequestHandler = (req, res, next) => {
 
   TODOS.push(newTodo);
   res.status(201).json(newTodo)
-  // console.log(req.o)
   next();
 };
 
