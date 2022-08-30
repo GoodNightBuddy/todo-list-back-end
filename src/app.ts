@@ -2,7 +2,6 @@ import { json } from 'body-parser';
 import express, {Request, Response, NextFunction} from 'express';
 import todoRoutes from './routes/todos';
 import cors from 'cors';
-// const cors=require("cors");
 
 const corsOptions ={
    origin:'*', 
